@@ -91,33 +91,51 @@ where
     Q: CustomMsg,
 {
     pub fn mint(
-        &self,
+        &self, // self is the Cw721Contract, needs access to the rest of the contract (methods, state, etc); usually implicit
         deps: DepsMut,
         _env: Env,
         info: MessageInfo,
-        msg: MintMsg<T>,
+        msg: MintMsg<T>, // info about token we are minting, look at definition
     ) -> Result<Response<C>, ContractError> {
+        // check if the account that's minting is authorized to mint
+        // declaring a variable and load it up from storage (need access to storage)
+        // added .load(store: deps.storage)
+        // ? is a shortcut for returning an error if there is one
         let minter = self.minter.load(deps.storage)?;
 
+        // doing it this way does not load the value from storage, it just creates a variable that is a reference to the storage
+        // let minter: item<Addr> = self.minter; 
+      
+        // if the sender of the mint msg is not authorized minter (initially set when the contract is spun up) in contract storage (state.rs), return an error
         if info.sender != minter {
             return Err(ContractError::Unauthorized {});
         }
 
         // create the token
+        // makes a TokenInfo struct that we will save to storage
         let token = TokenInfo {
             owner: deps.api.addr_validate(&msg.owner)?,
             approvals: vec![],
             token_uri: msg.token_uri,
             extension: msg.extension,
         };
+        // IndexMap is a map with additional index functionality
+        // Called update function
+        // pass in storage
+        // pass in token_id (msg.id) we are trying to update
+        // pass in old token (the token we just created) and matching it with the token_id
+        // If it matches, the token already claimed and we return an error
+        // If it doesn't match, it's available and send the token to the update function, saving the token to storage
         self.tokens
             .update(deps.storage, &msg.token_id, |old| match old {
                 Some(_) => Err(ContractError::Claimed {}),
                 None => Ok(token),
             })?;
-
+        
+        // We increment the number of tokens in the contract (function in state.rs)
         self.increment_tokens(deps.storage)?;
 
+        // Ouput data in this created response
         Ok(Response::new()
             .add_attribute("action", "mint")
             .add_attribute("minter", info.sender)

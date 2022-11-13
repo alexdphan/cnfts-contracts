@@ -11,6 +11,9 @@ use cw_storage_plus::{Index, IndexList, IndexedMap, Item, Map, MultiIndex};
 // This is where we set up our state, with a struct
 // Contract is a "class", we are developing it as a "class" in rust (struct and impl)
 // 'a (commonly used) is our lifetime specifier, we are using it to specify the lifetime of the contract. It's not specified in cw-template but it is in cw721-base. In this struct, everything is stored in lifetime 'a.
+// Data structure is set up here
+// Contract storage is monolithic, one storage only for the whole contract
+
 pub struct Cw721Contract<'a, T, C, E, Q>
 where
     T: Serialize + DeserializeOwned + Clone,
@@ -32,6 +35,7 @@ where
     pub operators: Map<'a, (&'a Addr, &'a Addr), Expiration>,
     /// lifetime 'a, key type &'a Addr, value type TokenInfo (data that is stored in the map as a struct, which can have the extension T). We also take an IndexList type which we imported above.
     /// We need to define the TokenIndexes are in order to use the IndexedMap() method. We also need to define the TokenInfo struct (what each token contains).
+    /// Wouldn't need to add addition arguments because for additional indexes because TokenIndexes is a list of all indexes.
     pub tokens: IndexedMap<'a, &'a str, TokenInfo<T>, TokenIndexes<'a, T>>,
 
     pub(crate) _custom_response: PhantomData<C>,
@@ -55,6 +59,7 @@ where
     E: CustomMsg,
     Q: CustomMsg,
 {
+    // We find the storage by these keys
     fn default() -> Self {
         Self::new(
             "nft_info",
@@ -73,6 +78,7 @@ where
     E: CustomMsg,
     Q: CustomMsg,
 {
+    // storage keys calls this new function which set all the keys as storage keys in the contract storage
     fn new(
         contract_key: &'a str,
         minter_key: &'a str,
@@ -81,12 +87,16 @@ where
         tokens_key: &'a str,
         tokens_owner_key: &'a str,
     ) -> Self {
+        // asks by address, returns all token ids owned by that address
+        // look at TokenIndexes struct below
         let indexes = TokenIndexes {
+            // new owner index which is a MultiIndex
             owner: MultiIndex::new(token_owner_idx, tokens_key, tokens_owner_key),
         };
         Self {
             contract_info: Item::new(contract_key),
-            minter: Item::new(minter_key),
+            // looking at the minter_key (fn default) to get the Item that is in storage (struct Cw721Contract) at the key "minter" (fn default)
+            minter: Item::new(minter_key), 
             token_count: Item::new(token_count_key),
             operators: Map::new(operator_key),
             tokens: IndexedMap::new(tokens_key, indexes),
@@ -96,10 +106,14 @@ where
         }
     }
 
+    // keeping track of number of tokens
     pub fn token_count(&self, storage: &dyn Storage) -> StdResult<u64> {
         Ok(self.token_count.may_load(storage)?.unwrap_or_default())
     }
 
+    // incrementing the token count
+    // takes the storage, storage at the the key "num_tokens" as an Item 
+    // loads the value at that key, increments it by 1, and saves it back to the storage
     pub fn increment_tokens(&self, storage: &mut dyn Storage) -> StdResult<u64> {
         let val = self.token_count(storage)? + 1;
         self.token_count.save(storage, &val)?;
@@ -113,6 +127,7 @@ where
     }
 }
 
+// Stored for each token    
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct TokenInfo<T> {
     /// The owner of the newly minted NFT
@@ -143,11 +158,20 @@ impl Approval {
     }
 }
 
+// Index by owner, approvals, token_uri, and extension (from TokenInfo)
+// lifetime specifier 'a and type extension T
 pub struct TokenIndexes<'a, T>
 where
     T: Serialize + DeserializeOwned + Clone,
 {
+    // TokenIdexes is a MultiIndex with lifetime 'a (whole life of the contract)
+    // and the key type is &'a Addr (address of the owner)
+    // and the value type is TokenInfo<T> (the data stored in the map)
+    // Look at the MultiIndex struct definition for more info
+    // MultiIndex stores (namespace, index_name, idx_value, pk) -> b"pk_len".
     pub owner: MultiIndex<'a, Addr, TokenInfo<T>, String>,
+
+    // can add more indexes here
 }
 
 impl<'a, T> IndexList<TokenInfo<T>> for TokenIndexes<'a, T>
@@ -163,3 +187,5 @@ where
 pub fn token_owner_idx<T>(_pk: &[u8], d: &TokenInfo<T>) -> Addr {
     d.owner.clone()
 }
+
+// can add index functions here
