@@ -14,6 +14,8 @@ use cosmwasm_std::Empty;
 // This is a simple type to let us handle empty extensions
 pub type Extension = Option<Empty>;
 
+// Uses entry point notation to define the entry points of the contract
+// more control, cleaner, lets us add extensions where we treat out contract as an instance of a class
 pub mod entry {
     use super::*;
 

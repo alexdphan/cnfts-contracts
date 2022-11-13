@@ -14,6 +14,10 @@ use crate::state::{Approval, Cw721Contract, TokenInfo};
 const CONTRACT_NAME: &str = "crates.io:cw721-base";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
+// Rust doesn't have classes, use impl blocks to group methods (T:, C:, E:, Q:)
+// https://doc.rust-lang.org/book/ch05-03-method-syntax.html
+// 'a (lifetime), T (our extension), C (custom message/response), E (custom execute?), Q (custom query?) on the Cw721Contract
+// implementing additional functionality (with methods) to our struct Cw721Contract
 impl<'a, T, C, E, Q> Cw721Contract<'a, T, C, E, Q>
 where
     T: Serialize + DeserializeOwned + Clone,
@@ -21,6 +25,8 @@ where
     E: CustomMsg,
     Q: CustomMsg,
 {
+    // Normally, you see a cfg that specifies that it is an entry point
+    // Rather than the entry point being above each function (Instantiate, execute, query) which are split between the execute.rs and query.rs files, all the entry point notation is in the lib file. 
     pub fn instantiate(
         &self,
         deps: DepsMut,

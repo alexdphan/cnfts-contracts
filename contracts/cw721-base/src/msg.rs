@@ -29,6 +29,7 @@ pub enum ExecuteMsg<T, E> {
         token_id: String,
         msg: Binary,
     },
+    /// Approve, Revoke, ApproveAll, RevokeAll: Giving rights to another account to transfer/send an nft that is held by your account 
     /// Allows operator to transfer / send the token from the owner's account.
     /// If expiration is set, then this allowance has a time/height limit
     Approve {
@@ -48,7 +49,7 @@ pub enum ExecuteMsg<T, E> {
     RevokeAll { operator: String },
 
     /// Mint a new NFT, can only be called by the contract minter
-    Mint(MintMsg<T>),
+    Mint(MintMsg<T>), // <T> is the extension type
 
     /// Burn an NFT the sender has access to
     Burn { token_id: String },
@@ -62,12 +63,13 @@ pub struct MintMsg<T> {
     /// Unique ID of the NFT
     pub token_id: String,
     /// The owner of the newly minter NFT
-    pub owner: String,
+    pub owner: String, 
     /// Universal resource identifier for this NFT
     /// Should point to a JSON file that conforms to the ERC721
-    /// Metadata JSON Schema
+    /// Metadata JSON Schema, optional to store metadata here (off-chain) (ex: IPFS, Sia, Arweave, etc)
     pub token_uri: Option<String>,
-    /// Any custom extension used by this contract
+    /// Any custom extension used by this contract 
+    /// NFT creators may want to store their NFT metadata on-chain so other contracts are able to interact with it. Store any data on chain you wish, using a generic extension: T.
     pub extension: T,
 }
 
