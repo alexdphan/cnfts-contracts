@@ -1,3 +1,4 @@
+use std::fmt::Debug; // added std::fmt::Debug for the derive(Debug) below
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
@@ -20,7 +21,7 @@ const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 // implementing additional functionality (with methods) to our struct Cw721Contract
 impl<'a, T, C, E, Q> Cw721Contract<'a, T, C, E, Q>
 where
-    T: Serialize + DeserializeOwned + Clone,
+    T: Serialize + DeserializeOwned + Clone + Debug, // added Debug, our extension T needs to be serializable, deserializable, cloneable, and debuggable (has to have these traits)
     C: CustomMsg,
     E: CustomMsg,
     Q: CustomMsg,
@@ -84,8 +85,8 @@ where
 
 // TODO pull this into some sort of trait extension??
 impl<'a, T, C, E, Q> Cw721Contract<'a, T, C, E, Q>
-where
-    T: Serialize + DeserializeOwned + Clone,
+where // contraints
+    T: Serialize + DeserializeOwned + Clone + Debug, // T is a generic type that must implement (has to have) Serialize, DeserializeOwned, Clone, and now Debug (manually added)
     C: CustomMsg,
     E: CustomMsg,
     Q: CustomMsg,
@@ -129,14 +130,24 @@ where
         self.tokens
             .update(deps.storage, &msg.token_id, |old| match old {
                 Some(_) => Err(ContractError::Claimed {}),
-                None => Ok(token),
+                None => Ok(token.clone()), // token needs to be cloned
             })?;
         
         // We increment the number of tokens in the contract (function in state.rs)
         self.increment_tokens(deps.storage)?;
 
+        // for easy local cargo test -- --show-output (to see the output of the tests)
+        println!("token_info: {:?}", token.clone());
+        // ex output, these unit tests would print out these NFTs like below
+        // ---- tests::use_metadata_extension stdout ----
+        // token_info: TokenInfo { owner: Addr("john"), approvals: [], token_uri: Some("https://starships.example.com/Starship/Enterprise.json"), extension: Some(Metadata { image: None, image_data: None, external_url: None, description: Some("Spaceship with Warp Drive"), name: Some("Starship USS Enterprise"), attributes: None, background_color: None, animation_url: None, youtube_url: None }) }
+
         // Ouput data in this created response
+        // More useful, for block explorers when we are on testnet
+        // Also useful for frontend devs or for anyone who needs to get information from the response
+        // Getting attributes from resonse using js would be response.attributes[0] for example
         Ok(Response::new()
+            .add_attribute("token_info", format!("{:?}", token)) // token must implement the Debug trait
             .add_attribute("action", "mint")
             .add_attribute("minter", info.sender)
             .add_attribute("owner", msg.owner)
@@ -161,7 +172,13 @@ where
         recipient: String,
         token_id: String,
     ) -> Result<Response<C>, ContractError> {
-        self._transfer_nft(deps, &env, &info, &recipient, &token_id)?;
+        // calls self helper function _ so we don't duplicate fn names)
+        self._transfer_nft(deps, &env, &info, &recipient, &token_id)?; 
+
+        // could be used to get more information about the token
+        // let token = self._transfer_nft(deps, &env, &info, &recipient, &token_id)?; 
+
+        // You could make a TransferNFTMsg struct that contains info, recipient, and token_id if you wanted to
 
         Ok(Response::new()
             .add_attribute("action", "transfer_nft")
@@ -179,7 +196,7 @@ where
         token_id: String,
         msg: Binary,
     ) -> Result<Response<C>, ContractError> {
-        // Transfer token
+        // Transfer token (helper function)
         self._transfer_nft(deps, &env, &info, &contract, &token_id)?;
 
         let send = Cw721ReceiveMsg {
@@ -310,15 +327,22 @@ where
         recipient: &str,
         token_id: &str,
     ) -> Result<TokenInfo<T>, ContractError> {
+        // takes the token (mutable), loads the token from the storage by token_id
+        // self.tokens would be an instance of IndexedMap, so we can use .load to get the token
+        // here you don't only pass in the storage, but also the key (token_id)
         let mut token = self.tokens.load(deps.storage, token_id)?;
         // ensure we have permissions
         self.check_can_send(deps.as_ref(), env, info, &token)?;
         // set owner and remove existing approvals
+        // set owner to recipient (recipient is a string)
         token.owner = deps.api.addr_validate(recipient)?;
+        // clear approvals, set to empty vector
         token.approvals = vec![];
-        self.tokens.save(deps.storage, token_id, &token)?;
+        // save the token back to the storage
+        self.tokens.save(deps.storage, token_id, &token)?; 
+        // respond Ok with the token (the main function called will respond with the token (with add_attribute))
         Ok(token)
-    }
+    } // could have used .update instead of .load and .save
 
     #[allow(clippy::too_many_arguments)]
     pub fn _update_approvals(
@@ -387,7 +411,7 @@ where
         }
     }
 
-    /// returns true iff the sender can transfer ownership of the token
+    /// returns true if the sender can transfer ownership of the token
     pub fn check_can_send(
         &self,
         deps: Deps,
@@ -425,3 +449,4 @@ where
         }
     }
 }
+

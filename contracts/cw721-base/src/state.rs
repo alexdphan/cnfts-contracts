@@ -59,7 +59,7 @@ where
     E: CustomMsg,
     Q: CustomMsg,
 {
-    // We find the storage by these keys
+    // We find the storage by these keys. Everything that lives in storage is found by these keys.
     fn default() -> Self {
         Self::new(
             "nft_info",
