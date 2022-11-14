@@ -5,6 +5,7 @@ use cosmwasm_std::{to_binary, Binary, CosmosMsg, StdResult, WasmMsg};
 
 /// Cw721ReceiveMsg should be de/serialized under `Receive()` variant in a ExecuteMsg
 #[cw_serde]
+// this Cw721ReceiveMsg contains a CosmosMsg, which is a variant of the ExecuteMsg enum
 pub struct Cw721ReceiveMsg {
     pub sender: String,
     pub token_id: String,
@@ -23,11 +24,15 @@ impl Cw721ReceiveMsg {
     where
         C: Clone + std::fmt::Debug + PartialEq + JsonSchema,
     {
-        let msg = self.into_binary()?;
+        // msg is the serialized binary version of struct/impl Cw721ReceiveMsg (self)
+        let msg = self.into_binary()?; 
         let execute = WasmMsg::Execute {
-            contract_addr: contract_addr.into(),
-            msg,
-            funds: vec![],
+            // attaches the contract address to the message 
+            // attaching wasm message to the the cosmos message
+            contract_addr: contract_addr.into(), 
+            // the serialized binary version of struct/impl Cw721ReceiveMsg (self)
+            msg, 
+            funds: vec![], // optionally attaches funds
         };
         Ok(execute.into())
     }

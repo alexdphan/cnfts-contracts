@@ -93,9 +93,9 @@ where // contraints
 {
     pub fn mint(
         &self, // self is the Cw721Contract, needs access to the rest of the contract (methods, state, etc); usually implicit
-        deps: DepsMut,
-        _env: Env,
-        info: MessageInfo,
+        deps: DepsMut, // storage, api, querier
+        _env: Env, // block info, contract info, message info
+        info: MessageInfo, // sender, funds
         msg: MintMsg<T>, // info about token we are minting, look at definition
     ) -> Result<Response<C>, ContractError> {
         // check if the account that's minting is authorized to mint
@@ -187,6 +187,7 @@ where
             .add_attribute("token_id", token_id))
     }
 
+    // doesn't just change the owner of the nft, it also takes a transaction
     fn send_nft(
         &self,
         deps: DepsMut,
@@ -197,8 +198,20 @@ where
         msg: Binary,
     ) -> Result<Response<C>, ContractError> {
         // Transfer token (helper function)
+        // _transfer_nft is being reused as a helper function
+        // sending the nft to a contract (&contract) so we can send a Cw721ReceiveMsg
         self._transfer_nft(deps, &env, &info, &contract, &token_id)?;
 
+        // Here, we create a Cw721ReceiveMsg that has the sender (below)
+        // sender is who sent the token to the contract
+        // token_id is the token that was sent
+        // msg is the message that was sent with the token (Binary is a type that can be converted to a string). Could want to include addtional info (message) with the token
+        // ----
+        // Have to be sure that address of this contract must be known to the contract that is receiving the NFT (person receiving has to know the address of the contract being sent to him/her). This is different than the sender itself. 
+        // The sender is the person sending the token to the contract, but the contract itself must be known to the person receiving the token
+        // Otherwise, any contract can send an NFT to this contract and it will accept it
+        // ----
+        // Cw721ReceiveMsg can make itself into a binary or can make itself into a cosmos message (check definition of Cw721ReceiveMsg)
         let send = Cw721ReceiveMsg {
             sender: info.sender.to_string(),
             token_id: token_id.clone(),
@@ -207,6 +220,9 @@ where
 
         // Send message
         Ok(Response::new()
+        // chaining the send message to the response
+        // diff than add._submessage: used for ibc, won't fail the whole tx if the submessage fails
+        // .add_message: will fail the whole tx if the send message fails
             .add_message(send.into_cosmos_msg(contract.clone())?)
             .add_attribute("action", "send_nft")
             .add_attribute("sender", info.sender)
@@ -419,12 +435,14 @@ where
         info: &MessageInfo,
         token: &TokenInfo<T>,
     ) -> Result<(), ContractError> {
-        // owner can send
+        // owner can send, if owner is info.sender then we return empty Ok result
         if token.owner == info.sender {
             return Ok(());
         }
 
         // any non-expired token approval can send
+        // if this token has any approvals, then we check if the approvals are not expired
+        // if the token has approvals and none of them are expired, then we return empty Ok result
         if token
             .approvals
             .iter()
@@ -433,11 +451,15 @@ where
             return Ok(());
         }
 
-        // operator can send
+        // operator can send; they have approval for all the NFTs an address has (doesn't actually own, but has the approval/ability to send/transfer)
+        // if there is an operator for this token owner and info.sender, then we return the operator
         let op = self
             .operators
             .may_load(deps.storage, (&token.owner, &info.sender))?;
         match op {
+            // check if the operator is expired
+            // if it is expired then we return an error
+            // if it is not expired, then we return empty Ok result
             Some(ex) => {
                 if ex.is_expired(&env.block) {
                     Err(ContractError::Unauthorized {})
