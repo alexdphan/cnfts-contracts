@@ -1,0 +1,20 @@
+/root/developer/cNFTs/target/debug/deps/typenum-8db5a565dff28ebb.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/op.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/consts.rs
+
+/root/developer/cNFTs/target/debug/deps/libtypenum-8db5a565dff28ebb.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/op.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/consts.rs
+
+/root/developer/cNFTs/target/debug/deps/typenum-8db5a565dff28ebb.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/op.rs /root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/consts.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs:
+/root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/op.rs:
+/root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/consts.rs:
+
+# env-dep:TYPENUM_BUILD_CONSTS=/root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/consts.rs
+# env-dep:TYPENUM_BUILD_OP=/root/developer/cNFTs/target/debug/build/typenum-b72fcb131ce6ea8f/out/op.rs
