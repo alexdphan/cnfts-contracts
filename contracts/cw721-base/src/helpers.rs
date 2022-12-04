@@ -184,7 +184,7 @@ impl<Q: CustomMsg, E: CustomMsg> Cw721Contract<Q, E> {
 
     /// returns true if the contract supports the enumerable extension
     pub fn has_enumerable(&self, querier: &QuerierWrapper) -> bool {
-        self.tokens(querier, self.addr(), None, Some(1)).is_ok()
+        self.tokens(querier, self.addr(), None, Some(1)).is_ok() // notes
     }
 }
 
