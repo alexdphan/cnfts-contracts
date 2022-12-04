@@ -472,4 +472,4 @@ where
     }
 }
 
-// need to deploy the contract
+// need to deploy the contract, more testing, and then we can start building the frontend
