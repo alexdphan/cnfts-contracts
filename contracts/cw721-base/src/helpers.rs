@@ -187,3 +187,5 @@ impl<Q: CustomMsg, E: CustomMsg> Cw721Contract<Q, E> {
         self.tokens(querier, self.addr(), None, Some(1)).is_ok()
     }
 }
+
+// test
