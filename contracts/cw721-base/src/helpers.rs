@@ -189,3 +189,4 @@ impl<Q: CustomMsg, E: CustomMsg> Cw721Contract<Q, E> {
 }
 
 // checking to see if this works
+// checking #2
