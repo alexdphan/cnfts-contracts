@@ -1,0 +1,15 @@
+/root/cNFTs/target/debug/deps/sha2-b2161357f901e459.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/core_api.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/consts.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/x86.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/x86.rs
+
+/root/cNFTs/target/debug/deps/libsha2-b2161357f901e459.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/core_api.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/consts.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/x86.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/x86.rs
+
+/root/cNFTs/target/debug/deps/sha2-b2161357f901e459.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/core_api.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/consts.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/x86.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/soft.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/x86.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/core_api.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/consts.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/soft.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha256/x86.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/soft.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.10.5/src/sha512/x86.rs:

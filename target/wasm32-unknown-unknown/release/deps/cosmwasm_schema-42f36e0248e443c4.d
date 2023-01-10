@@ -1,0 +1,12 @@
+/root/cNFTs/target/wasm32-unknown-unknown/release/deps/cosmwasm_schema-42f36e0248e443c4.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/casing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/export.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/idl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/query_response.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/remove.rs
+
+/root/cNFTs/target/wasm32-unknown-unknown/release/deps/libcosmwasm_schema-42f36e0248e443c4.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/casing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/export.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/idl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/query_response.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/remove.rs
+
+/root/cNFTs/target/wasm32-unknown-unknown/release/deps/cosmwasm_schema-42f36e0248e443c4.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/casing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/export.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/idl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/query_response.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/remove.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/casing.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/export.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/idl.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/query_response.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-1.1.5/src/remove.rs:

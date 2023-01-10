@@ -1,0 +1,13 @@
+/root/cNFTs/target/debug/deps/ed25519_zebra-e808946b2780ac28.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/batch.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signature.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signing_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/verification_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/../README.md
+
+/root/cNFTs/target/debug/deps/libed25519_zebra-e808946b2780ac28.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/batch.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signature.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signing_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/verification_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/../README.md
+
+/root/cNFTs/target/debug/deps/ed25519_zebra-e808946b2780ac28.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/batch.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signature.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signing_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/verification_key.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/../README.md
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/batch.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/error.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signature.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/signing_key.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/verification_key.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-zebra-3.0.0/src/../README.md:
